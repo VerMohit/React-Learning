@@ -35,12 +35,14 @@ const Content = () => {
     return (
         <main>
             {items.length ? (
+                // to display items in list in js, recommended to use .map() method
                 <ul>
                     {items.map((item) => (
+                        // Each list item in react MUST have a key - helps react know which items changed, added or removed
                         <li className="item" key={item.id}>
                             <input
                                 type="checkbox"
-                                onChange={() => handleCheck(item.id)}
+                                onChange={() => handleCheck(item.id)} // with a checkbox we need a onChange event. To pass params we use anonlymous func {() => func(params)}
                                 checked={item.checked}
                             />
                             <label
