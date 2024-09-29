@@ -8,28 +8,13 @@ import { useState } from 'react';
 function App() {
 
   // States needed by both Content and Footer components
-  const [items, setItems] = useState([
-      {
-          id: 1,
-          checked: true,
-          item: "One half pound bag of Cocoa Covered Almonds Unsalted"
-      },
-      {
-          id: 2,
-          checked: false,
-          item: "Item 2" 
-      },
-      {
-          id: 3,
-          checked: false,
-          item: "Item 3"
-      }
-  ]);
+  // Uses items now set to whatever is in local storage defined by `shoppinglist`
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')));
 
   // Source of truth for the input - controlled component
   const [newItem, setNewItem] = useState('');
 
-  // update state for items
+  // update state for items and save them locally
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
     localStorage.setItem('shoppinglist', JSON.stringify(newItems));
